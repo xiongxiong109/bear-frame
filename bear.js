@@ -38,7 +38,13 @@ function Bear(vArg){
 		}
 }
 Bear.prototype.html=function(str){
-	alert('message');
+	if(str){
+		for(var i=0;i<this.arr.length;i++){
+			this.arr[i].innerHTML=str;
+		}
+	}else{
+		return this.arr[0].innerHTML;
+	}
 }
 function $(vArg){
 	return new Bear(vArg); 
