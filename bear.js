@@ -71,6 +71,22 @@ Bear.prototype.addClass=function(cls){
 		}
 	}
 }
+/*
+removeClass
+*/
+Bear.prototype.removeClass=function(cls){
+	for(var i=0;i<this.arr.length;i++){
+		var clsArr=this.arr[i].className.split(' ');
+		for(var j=0;j<clsArr.length;j++){
+			if(clsArr[j] == cls){
+				//如果已经存在该类，就剔除
+				clsArr.splice(j,1);
+				this.arr[i].className=clsArr.join(' ');
+			}
+			//否则不做任何处理
+		}
+	}
+}
 function $(vArg){
 	return new Bear(vArg); 
 }
