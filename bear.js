@@ -16,6 +16,10 @@ var Bear=function(str){
 				arr=getByClass(document,str.substring(1));
 				return arr;
 				break;
+				default:
+				arr=document.getElementsByTagName(str);
+				return arr;
+				break;
 			}
 		break;
 	}
