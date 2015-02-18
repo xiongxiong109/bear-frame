@@ -41,7 +41,9 @@ function Bear(vArg){
 					case '.':   //class
 						this.arr = getByClass(document,vArg.substring(1));
 					break;
-					default:break;
+					default:
+						this.arr=document.getElementsByTagName(vArg);
+					break;
 				}
 				
 			break;
@@ -54,6 +56,19 @@ Bear.prototype.html=function(str){
 		}
 	}else{
 		return this.arr[0].innerHTML;
+	}
+}
+/*
+addClass
+*/
+Bear.prototype.addClass=function(cls){
+	var reCls=new RegExp('\\b'+cls+'\\b');
+	for(var i=0;i<this.arr.length;i++){
+		if(!this.arr[i].className){
+			this.arr[i].className=cls;
+		}else if(!reCls.test(this.arr[i].className)){
+			this.arr[i].className+=' '+cls;
+		}
 	}
 }
 function $(vArg){

@@ -6,18 +6,19 @@
 </head>
 <body>
 	<div id="move">Welcome to the linear world</div>
-	<div class="cal">123456</div>
-	<div class="cal">asdasd</div>
-	<div class="cal">fdsfds</div>
+	<div class="cal fl">123456</div>
+	<div class="cal fr">asdasd</div>
+	<div class="cal cl">fdsfds</div>
 	<div class="cal"></div>
 	<div class="cal"></div>
+	<div class="wrap"></div>
 	<script type="text/javascript" src="bear.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			console.log($("#move"));
 			console.log($(".cal"));
-			console.log($("div"));
 			console.log($("#move").html());
+			$("div").addClass("cal");
 		});
 	</script>
 </body>
