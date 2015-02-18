@@ -4,33 +4,6 @@ Bear.js由bear公司自主研发的js框架库
 /*
 	这个构造函数不能return,否则无法使用prototype进行继承
 */
-var Bear=function(str){
-	var arr=[];
-	switch(typeof str){
-		case "function":
-		window.onload=str;break;
-		case "string":
-			var tag=str.charAt(0);
-			switch(tag){
-				case "#":
-				arr.push( document.getElementById(str.substring(1)) );
-				break;
-				case ".":
-				arr=getByClass(document,str.substring(1));
-				return arr;
-				break;
-				default:
-				arr=document.getElementsByTagName(str);
-				return arr;
-				break;
-			}
-		break;
-	}
-}
-
-Bear.prototype.html=function(){
-	alert('message');
-}
 function getByClass(obj,cls){
 	var arr=[];
 	var reCls=new RegExp("\\b"+cls+"\\b");
@@ -43,6 +16,39 @@ function getByClass(obj,cls){
 	}
 	return arr;
 }
-var $=function(str){
-	return new Bear(str); 
+
+function Bear(vArg){
+		this.arr = [];  //选择元素的这样一个集合
+	
+		//vArg : function
+		switch(typeof vArg){
+			case 'function':
+				window.onload = vArg;
+			break;
+			case 'string':
+				
+				switch( vArg.charAt(0) ){
+					case '#':   //id
+						 this.arr.push(document.getElementById(vArg.substring(1)));
+					break;
+					case '.':   //class
+						this.arr = getByClass(document,vArg.substring(1));
+					break;
+					default:break;
+				}
+				
+			break;
+		}
+}
+Bear.prototype.html=function(str){
+	if(str){
+		for(var i=0;i<this.arr.length;i++){
+			this.arr[i].innerHTML=str;
+		}
+	}else{
+		return this.arr[0].innerHTML;
+	}
+}
+function $(vArg){
+	return new Bear(vArg); 
 }
