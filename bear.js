@@ -5,6 +5,7 @@ Bear.js由bear公司自主研发的js框架库
 	这个构造函数不能return,否则无法使用prototype进行继承
 */
 /*hahahaha*/
+/*heiadsasd*/
 function getByClass(obj,cls){
 	var arr=[];
 	var reCls=new RegExp("\\b"+cls+"\\b");
