@@ -48,6 +48,7 @@ Bear.prototype.html=function(str){
 	}else{
 		return this.arr[0].innerHTML;
 	}
+	/*it is easy!*/
 }
 function $(vArg){
 	return new Bear(vArg); 
