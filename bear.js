@@ -1,6 +1,9 @@
 /*
 Bear.js由bear公司自主研发的js框架库
 */
+/*
+	这个构造函数不能return,否则无法使用prototype进行继承
+*/
 var Bear=function(str){
 	var arr=[];
 	switch(typeof str){
@@ -10,7 +13,7 @@ var Bear=function(str){
 			var tag=str.charAt(0);
 			switch(tag){
 				case "#":
-				return document.getElementById(str.substring(1));
+				arr.push( document.getElementById(str.substring(1)) );
 				break;
 				case ".":
 				arr=getByClass(document,str.substring(1));
@@ -23,6 +26,10 @@ var Bear=function(str){
 			}
 		break;
 	}
+}
+
+Bear.prototype.html=function(){
+	alert('message');
 }
 function getByClass(obj,cls){
 	var arr=[];
