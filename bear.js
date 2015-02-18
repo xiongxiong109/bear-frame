@@ -16,6 +16,13 @@ function getByClass(obj,cls){
 	}
 	return arr;
 }
+function bindEvent(obj,ev,fn){
+	if(obj.addEventListener){
+		obj.addEventListener(ev,fn,false);
+	}else{
+		obj.attachEvent('on'+ev,fn);
+	}
+}
 
 function Bear(vArg){
 		this.arr = [];  //选择元素的这样一个集合
@@ -23,7 +30,7 @@ function Bear(vArg){
 		//vArg : function
 		switch(typeof vArg){
 			case 'function':
-				window.onload = vArg;
+				bindEvent(window,'load',vArg);
 			break;
 			case 'string':
 				
