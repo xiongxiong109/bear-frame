@@ -12,8 +12,25 @@ var Bear=function(str){
 				case "#":
 				return document.getElementById(str.substring(1));
 				break;
+				case ".":
+				arr=getByClass(document,str.substring(1));
+				return arr;
+				break;
 			}
+		break;
 	}
+}
+function getByClass(obj,cls){
+	var arr=[];
+	var reCls=new RegExp("\\b"+cls+"\\b");
+	var tg=obj.getElementsByTagName("*");
+	var len=tg.length;
+	for(var i=0;i<len;i++){
+		if( reCls.test(tg[i].className) ){
+			arr.push(tg[i]);
+		}
+	}
+	return arr;
 }
 var $=function(str){
 	return new Bear(str); 
